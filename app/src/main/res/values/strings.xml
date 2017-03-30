@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Android-JD-Client</string>
-    <string name="title_home">首页</string>
-    <string name="title_dashboard">分类</string>
-    <string name="title_notifications">我的</string>
-    <string name="title_find">发现</string>
+    <string name="title_nav_home">首页</string>
+    <string name="title_nav_category">分类</string>
+    <string name="title_nav_find">发现</string>
+    <string name="title_nav_cart">购物车</string>
+    <string name="title_nav_my">我的</string>
 </resources>

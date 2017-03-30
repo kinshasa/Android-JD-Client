@@ -29,4 +29,9 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
     testCompile 'junit:junit:4.12'
+
+
+
+    //Android平台的导航控件@https://github.com/HomHomLin/AdvancedPagerSlidingTabStrip
+    compile 'homhomlin.lib:apsts:1.8.0'
 }
