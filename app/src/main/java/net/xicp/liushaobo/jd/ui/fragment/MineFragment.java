@@ -13,12 +13,12 @@ import net.xicp.liushaobo.jd.R;
 /**
  * Created by linhonghong on 2015/8/11.
  */
-public class FirstFragment extends Fragment {
+public class MineFragment extends Fragment {
 
-    public static FirstFragment instance() {
-        FirstFragment view = new FirstFragment();
-		return view;
-	}
+    public static MineFragment instance() {
+        MineFragment view = new MineFragment();
+        return view;
+    }
 
     @Nullable
     @Override

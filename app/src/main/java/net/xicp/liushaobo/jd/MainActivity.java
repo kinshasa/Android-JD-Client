@@ -10,10 +10,11 @@ import android.support.v4.view.ViewPager;
 import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 
 import net.xicp.liushaobo.jd.ui.activity.BaseActivity;
-import net.xicp.liushaobo.jd.ui.fragment.FirstFragment;
-import net.xicp.liushaobo.jd.ui.fragment.FourthFragment;
-import net.xicp.liushaobo.jd.ui.fragment.SecondFragment;
-import net.xicp.liushaobo.jd.ui.fragment.ThirdFragment;
+import net.xicp.liushaobo.jd.ui.fragment.HomeFragment;
+import net.xicp.liushaobo.jd.ui.fragment.CartFragment;
+import net.xicp.liushaobo.jd.ui.fragment.CategoryFragment;
+import net.xicp.liushaobo.jd.ui.fragment.MineFragment;
+import net.xicp.liushaobo.jd.ui.fragment.NewsFragment;
 import net.xicp.liushaobo.jd.ui.viewpager.APSTSViewPager;
 
 /**
@@ -26,17 +27,19 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     public AdvancedPagerSlidingTabStrip mAPSTS;
     public APSTSViewPager mVP;
 
-    private static final int VIEW_FIRST = 0;
-    private static final int VIEW_SECOND = 1;
-    private static final int VIEW_THIRD = 2;
-    private static final int VIEW_FOURTH = 3;
+    private static final int VIEW_HOME = 0;
+    private static final int VIEW_CATEGORY = 1;
+    private static final int VIEW_NEWS = 2;
+    private static final int VIEW_CART = 3;
+    private static final int VIEW_MINE = 4;
 
-    private static final int VIEW_SIZE = 4;
+    private static final int VIEW_SIZE = 5;
 
-    private FirstFragment mFirstFragment = null;
-    private SecondFragment mSecondFragment = null;
-    private ThirdFragment mThirdFragment = null;
-    private FourthFragment mFourthFragment = null;
+    private HomeFragment mHomeFragment = null;
+    private CategoryFragment mCategoryFragment = null;
+    private NewsFragment mNewsFragment = null;
+    private CartFragment mCartFragment = null;
+    private MineFragment mMineFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +63,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         adapter.notifyDataSetChanged();
         mAPSTS.setViewPager(mVP);
         mAPSTS.setOnPageChangeListener(this);
-        mVP.setCurrentItem(VIEW_FIRST);
-        mAPSTS.showDot(VIEW_FIRST, "99+");
+        mVP.setCurrentItem(VIEW_HOME);
+        mAPSTS.showDot(VIEW_HOME, "99+");
     }
 
     @Override
@@ -89,27 +92,31 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         public Fragment getItem(int position) {
             if (position >= 0 && position < VIEW_SIZE) {
                 switch (position) {
-                    case VIEW_FIRST:
-                        if (null == mFirstFragment)
-                            mFirstFragment = FirstFragment.instance();
-                        return mFirstFragment;
+                    case VIEW_HOME:
+                        if (null == mHomeFragment)
+                            mHomeFragment = HomeFragment.instance();
+                        return mHomeFragment;
 
-                    case VIEW_SECOND:
-                        if (null == mSecondFragment)
-                            mSecondFragment = SecondFragment.instance();
-                        return mSecondFragment;
+                    case VIEW_CATEGORY:
+                        if (null == mCategoryFragment)
+                            mCategoryFragment = CategoryFragment.instance();
+                        return mCategoryFragment;
 
-                    case VIEW_THIRD:
-                        if (null == mThirdFragment)
-                            mThirdFragment = ThirdFragment.instance();
-                        return mThirdFragment;
+                    case VIEW_NEWS:
+                        if (null == mNewsFragment)
+                            mNewsFragment = NewsFragment.instance();
+                        return mNewsFragment;
 
-                    case VIEW_FOURTH:
-                        if (null == mFourthFragment)
-                            mFourthFragment = FourthFragment.instance();
-                        return mFourthFragment;
+                    case VIEW_CART:
+                        if (null == mCartFragment)
+                            mCartFragment = CartFragment.instance();
+                        return mCartFragment;
+
+                    case VIEW_MINE:
                     default:
-                        break;
+                        if (null == mMineFragment)
+                            mMineFragment = mMineFragment.instance();
+                        return mMineFragment;
                 }
             }
             return null;
@@ -124,14 +131,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         public CharSequence getPageTitle(int position) {
             if (position >= 0 && position < VIEW_SIZE) {
                 switch (position) {
-                    case VIEW_FIRST:
-                        return "first";
-                    case VIEW_SECOND:
-                        return "second";
-                    case VIEW_THIRD:
-                        return "third";
-                    case VIEW_FOURTH:
-                        return "fourth";
+                    case VIEW_HOME:
+                        return "京东";
+                    case VIEW_CATEGORY:
+                        return "分类";
+                    case VIEW_NEWS:
+                        return "发现";
+                    case VIEW_CART:
+                        return "购物车";
+                    case VIEW_MINE:
+                        return "我的";
                     default:
                         break;
                 }
@@ -143,14 +152,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         public Integer getPageIcon(int index) {
             if (index >= 0 && index < VIEW_SIZE) {
                 switch (index) {
-                    case VIEW_FIRST:
-                        return R.mipmap.home_main_icon_n;
-                    case VIEW_SECOND:
-                        return R.mipmap.home_categry_icon_n;
-                    case VIEW_THIRD:
-                        return R.mipmap.home_live_icon_n;
-                    case VIEW_FOURTH:
-                        return R.mipmap.home_mine_icon_n;
+                    case VIEW_HOME:
+                        return R.drawable.ic_home_black_24dp;
+                    case VIEW_CATEGORY:
+                        return R.drawable.ic_category_black_24dp;
+                    case VIEW_NEWS:
+                        return R.drawable.ic_find_in_page_black_24dp;
+                    case VIEW_CART:
+                        return R.drawable.ic_shopping_cart_black_24dp;
+                    case VIEW_MINE:
+                        return R.drawable.ic_person_outline_black_24dp;
                     default:
                         break;
                 }
@@ -162,14 +173,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         public Integer getPageSelectIcon(int index) {
             if (index >= 0 && index < VIEW_SIZE) {
                 switch (index) {
-                    case VIEW_FIRST:
-                        return R.mipmap.home_main_icon_f_n;
-                    case VIEW_SECOND:
-                        return R.mipmap.home_categry_icon_f_n;
-                    case VIEW_THIRD:
-                        return R.mipmap.home_live_icon_f_n;
-                    case VIEW_FOURTH:
-                        return R.mipmap.home_mine_icon_f_n;
+                    case VIEW_HOME:
+                        return R.drawable.ic_home_black_24dp_selected;
+                    case VIEW_CATEGORY:
+                        return R.drawable.ic_category_black_24dp_selected;
+                    case VIEW_NEWS:
+                        return R.drawable.ic_find_in_page_black_24dp_selected;
+                    case VIEW_CART:
+                        return R.drawable.ic_shopping_cart_black_24dp_selected;
+                    case VIEW_MINE:
+                        return R.drawable.ic_person_outline_black_24dp_selected;
                     default:
                         break;
                 }

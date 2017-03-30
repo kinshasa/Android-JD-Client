@@ -13,10 +13,10 @@ import net.xicp.liushaobo.jd.R;
 /**
  * Created by linhonghong on 2015/8/11.
  */
-public class ThirdFragment  extends Fragment {
+public class CartFragment extends Fragment {
 
-    public static ThirdFragment instance() {
-        ThirdFragment view = new ThirdFragment();
+    public static CartFragment instance() {
+        CartFragment view = new CartFragment();
         return view;
     }
 
