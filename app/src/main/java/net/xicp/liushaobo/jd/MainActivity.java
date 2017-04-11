@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 
 import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 
-import net.xicp.liushaobo.jd.ui.activity.BaseActivity;
+import net.xicp.liushaobo.jd.ui.BaseActivity;
 import net.xicp.liushaobo.jd.ui.fragment.HomeFragment;
 import net.xicp.liushaobo.jd.ui.fragment.CartFragment;
 import net.xicp.liushaobo.jd.ui.fragment.CategoryFragment;

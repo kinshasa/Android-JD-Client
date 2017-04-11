@@ -1,4 +1,4 @@
-package net.xicp.liushaobo.jd.ui.activity;
+package net.xicp.liushaobo.jd.ui;
 
 import android.content.Context;
 import android.content.Intent;

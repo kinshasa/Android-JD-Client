@@ -1,4 +1,4 @@
-package net.xicp.liushaobo.jd.ui.activity;
+package net.xicp.liushaobo.jd.ui;
 
 /**
  * Created by liusp@gagc.com.cn on 2016.10.25.

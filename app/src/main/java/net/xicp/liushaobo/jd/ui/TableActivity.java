@@ -1,4 +1,4 @@
-package net.xicp.liushaobo.jd.ui.activity;
+package net.xicp.liushaobo.jd.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
