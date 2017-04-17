@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android-JD-Client.iml" filepath="$PROJECT_DIR$/Android-JD-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-http-module/android-http-module.iml" filepath="$PROJECT_DIR$/android-http-module/android-http-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-log-module/android-log-module.iml" filepath="$PROJECT_DIR$/android-log-module/android-log-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-volley-master/android-volley-master.iml" filepath="$PROJECT_DIR$/android-volley-master/android-volley-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

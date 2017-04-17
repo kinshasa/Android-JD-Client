@@ -1,20 +1,25 @@
 package net.xicp.liushaobo.jd;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.lhh.apst.library.AdvancedPagerSlidingTabStrip;
 
 import net.xicp.liushaobo.jd.ui.BaseActivity;
-import net.xicp.liushaobo.jd.ui.fragment.HomeFragment;
+import net.xicp.liushaobo.jd.ui.home.HomeFragment;
 import net.xicp.liushaobo.jd.ui.fragment.CartFragment;
 import net.xicp.liushaobo.jd.ui.fragment.CategoryFragment;
 import net.xicp.liushaobo.jd.ui.fragment.MineFragment;
 import net.xicp.liushaobo.jd.ui.fragment.NewsFragment;
+import net.xicp.liushaobo.jd.ui.view.SplashView;
 import net.xicp.liushaobo.jd.ui.viewpager.APSTSViewPager;
 
 /**
@@ -45,16 +50,20 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViews();
-        init();
+        //加载广告页
+        showSplashView();
+        //初始化页面
+        initViews();
+        //StatusBarUtil.setTransparent(this);
+        // call after setContentView(R.layout.activity_sample);
     }
 
-    private void findViews() {
+
+    private void initViews() {
+
         mAPSTS = (AdvancedPagerSlidingTabStrip) findViewById(R.id.tabs);
         mVP = (APSTSViewPager) findViewById(R.id.vp_main);
-    }
 
-    private void init() {
         mVP.setOffscreenPageLimit(VIEW_SIZE);
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
 
@@ -65,6 +74,53 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         mAPSTS.setOnPageChangeListener(this);
         mVP.setCurrentItem(VIEW_HOME);
         mAPSTS.showDot(VIEW_HOME, "99+");
+
+
+
+    }
+
+    void showSplashView(){
+        SplashView.showSplashView(this, 6, R.drawable.default_img, new SplashView.OnSplashViewActionListener() {
+            @Override
+            public void onSplashImageClick(String actionUrl) {
+                Log.d("SplashView", "img clicked. actionUrl: " + actionUrl);
+                Toast.makeText(MainActivity.this, "img clicked.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSplashViewDismiss(boolean initiativeDismiss) {
+                Log.d("SplashView", "dismissed, initiativeDismiss: " + initiativeDismiss);
+            }
+        });
+
+        // call this method anywhere to update splash view data
+        SplashView.updateSplashData(this, "http://ww2.sinaimg.cn/large/72f96cbagw1f5mxjtl6htj20g00sg0vn.jpg", "http://jkyeo.com");
+
+    }
+
+    private long time = 0;
+    /**
+     * 双击返回桌面
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - time > 1000) {
+                Toast.makeText(this, "再按一次返回桌面", Toast.LENGTH_SHORT).show();
+                time = System.currentTimeMillis();
+            } else {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+            }
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+
     }
 
     @Override
