@@ -1,5 +1,9 @@
 package net.xicp.liushaobo.jd.ui.home.model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -7,23 +11,39 @@ import java.util.ArrayList;
  */
 
 public class HomePage {
-    private String naviVer;
-    private int tipsIdleTime;
-    private String toTopBtnImg;
-    private int cycNum;
-    private int firework;
-    private String tipsShowTime;
-    private String cycFirstTimeStamp;
-    private String code;
-    private int executeTime;
-    private int appCenterAnimations;
-    private int tipsFunction;
-    private String personalSourceValue;
-    private int tagAnimations;
-    private Boolean canBeDefault;
-    private int tipsShowType;
-    private ArrayList<Floor> floorList;
-    private int lazy;
-    private String toBottomBtnImg;
+    public String naviVer;
+    public int tipsIdleTime;
+    public String toTopBtnImg;
+    public int cycNum;
+    public int firework;
+    public String tipsShowTime;
+    public String cycFirstTimeStamp;
+    public String code;
+    public int executeTime;
+    public int appCenterAnimations;
+    public int tipsFunction;
+    public String personalSourceValue;
+    public int tagAnimations;
+    public Boolean canBeDefault;
+    public int tipsShowType;
 
+    public FloorList floorList;
+    public int lazy;
+    public String toBottomBtnImg;
+
+    public HomePage() {
+
+    }
+
+    public HomePage(String str) {
+        try {
+            JSONObject jsonObject = new JSONObject(str);
+            this.naviVer = jsonObject.getString("naviVer");
+            String floorStr = jsonObject.getString("floorList");
+            this.floorList = new FloorList(floorStr);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

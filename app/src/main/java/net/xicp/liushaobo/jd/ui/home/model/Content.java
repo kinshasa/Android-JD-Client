@@ -5,4 +5,8 @@ package net.xicp.liushaobo.jd.ui.home.model;
  */
 
 public class Content {
+
+    Content(String str){
+
+    }
 }

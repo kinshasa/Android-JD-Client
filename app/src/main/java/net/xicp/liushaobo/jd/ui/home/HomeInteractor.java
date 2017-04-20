@@ -2,7 +2,8 @@ package net.xicp.liushaobo.jd.ui.home;
 
 import android.content.Context;
 
-import com.android.http.Http;
+import net.xicp.liushaobo.jd.ui.home.model.FloorList;
+import net.xicp.liushaobo.jd.ui.home.model.HomePage;
 
 /**
  * Created by lshaobocsu@gmail.com on 2017.4.17.
@@ -10,5 +11,12 @@ import com.android.http.Http;
 
 public interface HomeInteractor {
 
-    void request(Context context, Http.onHttpListener listener);
+    interface onFetchListener {
+
+        void onSuccess(HomePage homePage);
+
+        void onFail(Object exceptionInfo);
+    }
+
+    void request(Context context, onFetchListener listener);
 }

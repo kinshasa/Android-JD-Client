@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import net.xicp.liushaobo.jd.Logutils.L;
+import com.android.log.L;
 
 
 /**

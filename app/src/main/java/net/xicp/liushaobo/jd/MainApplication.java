@@ -2,7 +2,8 @@ package net.xicp.liushaobo.jd;
 
 import android.app.Application;
 
-import net.xicp.liushaobo.jd.Logutils.L;
+import com.android.log.L;
+
 
 /**
  * Created by lshaobocsu@gmail.com on 2017.4.11.
